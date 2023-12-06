@@ -8,6 +8,7 @@ build-job:
   script:
     - echo "Compiling the code..."
     - echo "Compile complete."
+    - ls
 
 unit-test-job:
   stage: test
