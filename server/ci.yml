@@ -2,6 +2,14 @@ stages:
   - build
   - test
 
+variables:
+  GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .gradle/
+
 build-job:
   stage: build
   image: gradle:8.5.0-jdk21-alpine
