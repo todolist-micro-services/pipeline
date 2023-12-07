@@ -7,9 +7,13 @@ build-job:
   image: gradle:8.5.0-jdk21-alpine
   script:
     - ./gradlew build --info
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
 
 unit-test-job:
   stage: test
   image: gradle:8.5.0-jdk21-alpine
   script:
     - ./gradlew test --info
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
