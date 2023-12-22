@@ -10,7 +10,7 @@ cache:
 
 build-job:
   stage: build
-  image: npm:latest
+  image: node:latest
   script:
     - npm install
   rules:
@@ -18,7 +18,7 @@ build-job:
 
 unit-test-job:
   stage: test
-  image: npm:latest
+  image: node:latest
   script:
     - npm test
   rules:
