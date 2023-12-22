@@ -1,0 +1,33 @@
+stages:
+  - build
+  - test
+
+variables:
+  NODE_VERSION: "14"
+  NPM_CACHE_DIR: "$CI_PROJECT_DIR/.npm"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - node_modules/
+    - .npm/
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y curl
+  - curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash -
+  - apt-get install -y nodejs
+
+build-job:
+  stage: build
+  script:
+    - npm install
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
+
+unit-test-job:
+  stage: test
+  script:
+    - npm test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
