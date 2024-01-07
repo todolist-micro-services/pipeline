@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - node_modules/
+    - .npm/
+
+build-job:
+  stage: build
+  image: node:latest
+  script:
+    - npm install
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
+
+test-job:
+  stage: test
+  image: node:latest
+  script:
+    - npm run test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
