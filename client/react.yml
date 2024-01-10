@@ -2,6 +2,9 @@ stages:
   - build
   - test
 
+before_script:
+  - git submodule update --init --recursive
+
 cache:
   key: "$CI_COMMIT_REF_SLUG"
   paths:
