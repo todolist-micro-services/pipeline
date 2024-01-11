@@ -1,21 +1,13 @@
 # pipeline
 
-This project contain all pipeline configuration for the server and client
+This project contain all pipeline configuration for selected languages and framework.
 
-## server
-
-- ci.yml -> will build and run test for gradle project
+- gradle.yml -> will build and run test for gradle project
   - ./gradlew build --info
   - ./gradlew test --info
 - node.yml -> will build and run test for node project
-  - npm install
-  - npm run test
-
-## client
-
+  - yarn
+  - yarn test
 - react.yml -> will build and run linter for react project
   - yarn && yarn build
   - yarn lint
-- typescript.yml -> will build and run test for typescript project
-  - yarn
-  - yarn test
