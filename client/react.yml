@@ -15,7 +15,7 @@ build-job:
   stage: build
   image: node:latest
   script:
-    - yarn
+    - yarn && yarn build
   rules:
     - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
 
